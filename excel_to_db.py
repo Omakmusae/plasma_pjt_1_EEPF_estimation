@@ -31,6 +31,16 @@ CREATE TABLE IF NOT EXISTS eepf_data (
 """)
 
 
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS eepf_graph (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pressure REAL,
+    power REAL,
+    eepf_json TEXT
+)
+""")
+
+
 conn.commit()
 conn.close()
 #
