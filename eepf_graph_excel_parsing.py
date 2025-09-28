@@ -26,17 +26,9 @@ else:
 # -----------------------------
 # 2. SQLite 연결 및 테이블 생성
 # -----------------------------
-conn = sqlite3.connect("eepf_graph.db")
+conn = sqlite3.connect("EEPF_estimation.db")
 cursor = conn.cursor()
 
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS eepf_graph (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    pressure REAL,
-    power REAL,
-    eepf_json TEXT
-)
-""")
 
 # -----------------------------
 # 3. 마커에서 조건 추출 함수 (변동 없음)
