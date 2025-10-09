@@ -8,8 +8,8 @@ import numpy as np
 # 1. 파일 및 폴더 설정
 # -----------------------------
 excel_file_name = "EEPF_data.xlsx"
-data_folder = "./"
-excel_file_path = os.path.join(data_folder, excel_file_name)
+data_folder = ".."
+excel_file_path = os.path.join(excel_file_name)
 sheet_name = "Sheet1" 
 
 print(f"▶ 처리할 엑셀 파일: {excel_file_name} ({sheet_name})")
@@ -20,7 +20,9 @@ if not os.path.exists(excel_file_path):
 # -----------------------------
 # 2. SQLite 연결
 # -----------------------------
-conn = sqlite3.connect("EEPF_estimation.db")
+
+db_file_path = os.path.join(".", "EEPF_estimation.db")
+conn = sqlite3.connect(db_file_path)
 cursor = conn.cursor()
 
 # [수정] 테이블 생성 DDL 삭제 (사용자 요청 반영)

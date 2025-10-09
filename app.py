@@ -1,7 +1,11 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+from dnn_model import run_dnn_sample_model_page
 from dnn_model import run_dnn_model_page
+
+
+
 
 def maxwellian_eepf(energy, Te, ne):
     """
@@ -52,17 +56,25 @@ def main():
     st.sidebar.title("시각화 선택")
     
     # 사이드바에서 탭 선택
+
+    func_1 = 'Maxwellian EEPF 시각화'
+    func_2 = 'DNN 모델 학습 및 예측 (Sample Data)'
+    func_3 = 'DNN 모델 학습 및 예측'
+
     selection = st.sidebar.radio(
         "어떤 기능을 사용하시겠습니까?",
-        ("Maxwellian EEPF 시각화", "DNN 모델 학습 및 예측")
+        (func_1, func_2, func_3), index=2
     )
 
-    if selection == "Maxwellian EEPF 시각화":
+    if selection == func_1:
         show_maxwellian_eepf()
-    elif selection == "DNN 모델 학습 및 예측":
+    elif selection == func_2:
         # 데이터 파일 경로 설정
         file_path = 'plasma_ne_sample.xlsx' 
-        run_dnn_model_page(file_path)
+        run_dnn_sample_model_page(file_path)
+    elif selection == func_3:
+        # 데이터 파일 경로 설정
+        run_dnn_model_page()
 
 if __name__ == "__main__":
     main()

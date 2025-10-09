@@ -10,7 +10,7 @@ import numpy as np
 # -----------------------------
 # [수정] WIPS 엑셀 파일 이름 지정
 excel_file_name = "wips_data.xlsx"
-data_folder = "./"
+data_folder = "."
 excel_file_path = os.path.join(data_folder, excel_file_name)
 
 print(f"▶ 처리할 엑셀 파일: {excel_file_name}")
@@ -23,7 +23,8 @@ if not os.path.exists(excel_file_path):
 # -----------------------------
 # 2. SQLite 연결 및 테이블 생성
 # -----------------------------
-conn = sqlite3.connect("EEPF_estimation.db")
+db_file_path = os.path.join(".", "EEPF_estimation.db")
+conn = sqlite3.connect(db_file_path)
 cursor = conn.cursor()
 
 

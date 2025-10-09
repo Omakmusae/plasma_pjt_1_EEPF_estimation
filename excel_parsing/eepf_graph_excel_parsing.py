@@ -8,8 +8,8 @@ import numpy as np
 # -----------------------------
 # 1. CSV 파일들이 들어있는 폴더 설정
 # -----------------------------
-data_folder = "EEPF_graph_dataset" 
-csv_files = [] 
+data_folder = os.path.join(".", "EEPF_graph_dataset")
+csv_files = []
 
 try:
     csv_files = [f for f in os.listdir(data_folder) if f.endswith(".csv")]
@@ -26,7 +26,8 @@ else:
 # -----------------------------
 # 2. SQLite 연결 및 테이블 생성
 # -----------------------------
-conn = sqlite3.connect("EEPF_estimation.db")
+db_file_path = os.path.join(".", "EEPF_estimation.db")
+conn = sqlite3.connect(db_file_path)
 cursor = conn.cursor()
 
 
