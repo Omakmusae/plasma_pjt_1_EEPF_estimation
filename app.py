@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-from dnn_model import run_dnn_sample_model_page
+from dnn_model_test import run_dnn_sample_model_page
 from dnn_model import run_dnn_model_page
 
 
