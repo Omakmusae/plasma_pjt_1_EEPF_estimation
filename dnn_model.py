@@ -150,30 +150,30 @@ def load_and_train_model():
             
         df_final = pd.DataFrame(all_data)
         
-        # ### 디버깅 코드 시작: 특정 (P, W) 조합의 샘플 수 확인 ###
-        # 확인하고 싶은 Pressure (P_test)와 Power (W_test)를 설정하세요.
-        P_test = 5.0  # 예시 값
-        W_test = 100.0 # 예시 값
+        # # ### 디버깅 코드 시작: 특정 (P, W) 조합의 샘플 수 확인 ###
+        # # 확인하고 싶은 Pressure (P_test)와 Power (W_test)를 설정하세요.
+        # P_test = 5.0  # 예시 값
+        # W_test = 100.0 # 예시 값
         
-        # 1. 특정 조합의 샘플 수 확인
-        test_samples = df_final[
-            (df_final['pressure'] == P_test) & 
-            (df_final['power'] == W_test)
-        ]
-        test_count = 0
+        # # 1. 특정 조합의 샘플 수 확인
+        # test_samples = df_final[
+        #     (df_final['pressure'] == P_test) & 
+        #     (df_final['power'] == W_test)
+        # ]
+        # test_count = 0
 
-        for eepf_id, pressure, power, eepf_json_str, Ne_value in records:
-            if pressure == P_test and power == W_test:
-                test_count += 1
-        print(f"[디버그] DB 조인 결과 (records)에서 P={P_test}, W={W_test} 행의 개수: {test_count}개")
-        # 2. 결과 출력 (터미널 또는 Streamlit)
-        print(f"\n[디버그] P={P_test}, W={W_test} 조건의 df_final 샘플 수: {len(test_samples)}개")
-        # st.info(f"[디버그] P={P_test}, W={W_test} 조건의 df_final 샘플 수: {len(test_samples)}개")
+        # for eepf_id, pressure, power, eepf_json_str, Ne_value in records:
+        #     if pressure == P_test and power == W_test:
+        #         test_count += 1
+        # print(f"[디버그] DB 조인 결과 (records)에서 P={P_test}, W={W_test} 행의 개수: {test_count}개")
+        # # 2. 결과 출력 (터미널 또는 Streamlit)
+        # print(f"\n[디버그] P={P_test}, W={W_test} 조건의 df_final 샘플 수: {len(test_samples)}개")
+        # # st.info(f"[디버그] P={P_test}, W={W_test} 조건의 df_final 샘플 수: {len(test_samples)}개")
         
-        # 3. 샘플의 Np 값 확인 (Np가 1개인지 확인)
-        unique_np = test_samples['Ne'].unique() 
-        print(f"[디버그] 해당 조건의 고유 Np(Ne) 값: {unique_np.tolist()}")
-        # ### 디버깅 코드 끝 ###
+        # # 3. 샘플의 Np 값 확인 (Np가 1개인지 확인)
+        # unique_np = test_samples['Ne'].unique() 
+        # print(f"[디버그] 해당 조건의 고유 Np(Ne) 값: {unique_np.tolist()}")
+        # # ### 디버깅 코드 끝 ###
 
         for col in df_final.columns:
             df_final[col] = pd.to_numeric(df_final[col], errors='coerce') 
