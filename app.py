@@ -2,8 +2,9 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 from dnn_model_test import run_dnn_sample_model_page
-from dnn_model import run_dnn_model_page
 
+from dnn_train import run_dnn_training_page
+from dnn_predict import run_dnn_prediction_page
 
 
 
@@ -59,11 +60,13 @@ def main():
 
     func_1 = 'Maxwellian EEPF 시각화'
     func_2 = 'DNN 모델 학습 및 예측 (Sample Data)'
-    func_3 = 'DNN 모델 학습 및 예측'
+    
+    func_3_train = 'DNN 모델 학습 및 저장 (DB)'
+    func_4_predict = 'DNN 모델 사용 (DB)'
 
     selection = st.sidebar.radio(
         "어떤 기능을 사용하시겠습니까?",
-        (func_1, func_2, func_3), index=2
+        (func_1, func_2, func_3_train, func_4_predict), index=2
     )
 
     if selection == func_1:
@@ -72,9 +75,12 @@ def main():
         # 데이터 파일 경로 설정
         file_path = 'plasma_ne_sample.xlsx' 
         run_dnn_sample_model_page(file_path)
-    elif selection == func_3:
-        # 데이터 파일 경로 설정
-        run_dnn_model_page()
+    elif selection == func_3_train:
+        # 수정된 학습 페이지 실행
+        run_dnn_training_page()
+    elif selection == func_4_predict:
+        # 새로 추가된 추론 페이지 실행
+        run_dnn_prediction_page()
 
 if __name__ == "__main__":
     main()
