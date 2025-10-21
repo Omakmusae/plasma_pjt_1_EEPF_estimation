@@ -6,7 +6,7 @@ from dnn_model_test import run_dnn_sample_model_page
 from dnn_train import run_dnn_training_page
 from dnn_predict import run_dnn_prediction_page
 from dnn_train_with_wips import run_dnn_training_wips_page
-
+from dnn_predict_wips import run_dnn_prediction_wips_page
 
 def maxwellian_eepf(energy, Te, ne):
     """
@@ -64,10 +64,11 @@ def main():
     func_3_train = 'DNN 모델 학습 및 저장 (DB)'
     func_4_predict = 'DNN 모델 사용 (DB)'
     func_5_wips = 'DNN 모델 (WIPS 데이터)'
+    func_6_wips = 'DNN 모델 사용 (WIPS 데이터)'
 
     selection = st.sidebar.radio(
         "어떤 기능을 사용하시겠습니까?",
-        (func_1, func_2, func_3_train, func_4_predict, func_5_wips), index=4
+        (func_1, func_2, func_3_train, func_4_predict, func_5_wips, func_6_wips), index=4
     )
 
     if selection == func_1:
@@ -83,8 +84,8 @@ def main():
         # 새로 추가된 추론 페이지 실행
         run_dnn_prediction_page()
     elif selection == func_5_wips:
-        # 새로 추가된 추론 페이지 실행
         run_dnn_training_wips_page()
-
+    elif selection == func_6_wips:
+        run_dnn_prediction_wips_page()
 if __name__ == "__main__":
     main()
